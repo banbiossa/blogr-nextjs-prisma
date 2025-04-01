@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "reset": "ts-node scripts/reset.ts"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "@types/node": "^22.13.14",
     "@types/react": "^19.0.12",
     "prisma": "^6.5.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
   }
 }
