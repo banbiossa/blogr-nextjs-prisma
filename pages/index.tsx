@@ -3,20 +3,27 @@ import { GetStaticProps } from "next";
 import Layout from "../components/Layout";
 import Post, { PostProps } from "../components/Post";
 import prisma from "../lib/prisma";
+import { PrismaClient } from "@prisma/client";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const feed = await prisma.post.findMany({
-    where: { published: true },
-    include: {
-      author: {
-        select: { name: true },
-      },
-    },
-  });
+  const prisma = new PrismaClient();
+  try {
 
-  return {
-    props: { feed },
-    revalidate: 10
+    const feed = await prisma.post.findMany({
+      where: { published: true },
+      include: {
+        author: {
+          select: { name: true },
+        },
+      },
+    });
+
+    return {
+      props: { feed },
+      revalidate: 10
+    }
+  } finally {
+    await prisma.$disconnect();
   }
 }
 
