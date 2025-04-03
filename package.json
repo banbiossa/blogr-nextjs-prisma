@@ -6,7 +6,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "reset": "ts-node scripts/reset.ts"
+    "reset": "ts-node scripts/reset.ts",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
