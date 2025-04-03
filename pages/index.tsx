@@ -8,7 +8,6 @@ import { PrismaClient } from "@prisma/client";
 export const getStaticProps: GetStaticProps = async () => {
   const prisma = new PrismaClient();
   try {
-
     const feed = await prisma.post.findMany({
       where: { published: true },
       include: {
